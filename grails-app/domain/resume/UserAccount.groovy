@@ -4,7 +4,7 @@ class UserAccount {
 
     // hasOne property should be on the owning object
     // e.g. UserAccount owns the Profile
-    static hasOne = [userProfile : Profile, userName: String, userPassword: String,]
+    static hasOne = [userProfile : Profile, userName: String, userPassword: String]
 
     def getProfile(){
         return userProfile

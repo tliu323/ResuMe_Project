@@ -3,7 +3,7 @@ package resume
 class BootStrap {
 
     def init = { servletContext ->
-        createSaveAccount("Alba Whittlemore", "Miranda")
+        createSaveAccount("Alba",  "Miranda")
     }
 
     def destroy = {

@@ -3,8 +3,7 @@ package resume
 class Profile {
 
     static belongsTo = [ownerAccount : UserAccount]
-    static hasMany = [resumes : Resume,// does map take format [instance: class]
-                    qualification: Qualification]
+    static hasMany = [resumes : Resume, qualification: Qualification]
 
     static hasOne = [address : Address]
 
