@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "environments.development.dataSource.dbCreate",
+      "type": "java.lang.String",
+      "description": "Description for environments.development.dataSource.dbCreate."
+    }
+  ]
+}
