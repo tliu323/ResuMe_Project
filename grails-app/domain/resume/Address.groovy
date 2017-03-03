@@ -2,15 +2,8 @@ package resume
 
 class Address {
 
-    Profile ownerProfile
-    String apt
-    String streetName
-    String city
-    String postalCode
-    String country
-
-
-    static belongsTo = [ownerProfile : Profile]
+    static belongsTo = [userProfile : Profile]
+    static hasOne = [apt : String, streetName : String, city : String, postalCode : String, country : String]
 
     static constraints = {
         apt nullable: true

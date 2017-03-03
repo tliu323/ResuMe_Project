@@ -2,12 +2,9 @@ package resume
 
 class Resume {
 
-    Profile ownerProfile
-    Template template
-
-    static belongsTo = [ownerProfile : Profile]
-
     static hasOne = [template : Template]
+
+    static belongsTo = [userProfile : Profile]
 
     static constraints = {
     }

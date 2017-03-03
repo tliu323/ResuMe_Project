@@ -1,11 +1,14 @@
 package resume
 
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
+//import static org.springframework.http.HttpStatus.*
+//import grails.transaction.Transactional
+import grails.rest.RestfulController
 
-@Transactional(readOnly = true)
-class ResumeController {
+class ResumeController extends RestfulController {
 
+    ResumeController(){
+        super(Resume)
+    }
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -21,7 +24,6 @@ class ResumeController {
         respond new Resume(params)
     }
 
-    @Transactional
     def save(Resume resume) {
         if (resume == null) {
             transactionStatus.setRollbackOnly()
@@ -39,7 +41,7 @@ class ResumeController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'resume.label', default: 'Resume'), resume.id])
+                //flash.message = message(code: 'default.created.message', args: [message(code: 'resume.label', default: 'Resume'), resume.id])
                 redirect resume
             }
             '*' { respond resume, [status: CREATED] }
@@ -50,7 +52,6 @@ class ResumeController {
         respond resume
     }
 
-    @Transactional
     def update(Resume resume) {
         if (resume == null) {
             transactionStatus.setRollbackOnly()
@@ -68,14 +69,13 @@ class ResumeController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'resume.label', default: 'Resume'), resume.id])
+                //flash.message = message(code: 'default.updated.message', args: [message(code: 'resume.label', default: 'Resume'), resume.id])
                 redirect resume
             }
             '*'{ respond resume, [status: OK] }
         }
     }
 
-    @Transactional
     def delete(Resume resume) {
 
         if (resume == null) {
@@ -88,7 +88,7 @@ class ResumeController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'resume.label', default: 'Resume'), resume.id])
+                //flash.message = message(code: 'default.deleted.message', args: [message(code: 'resume.label', default: 'Resume'), resume.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +98,7 @@ class ResumeController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'resume.label', default: 'Resume'), params.id])
+               // flash.message = message(code: 'default.not.found.message', args: [message(code: 'resume.label', default: 'Resume'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

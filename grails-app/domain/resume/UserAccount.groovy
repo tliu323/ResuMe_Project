@@ -14,7 +14,7 @@ class UserAccount {
     }
 
     static constraints = {
-        userProfile nullable: true // Allows a UserAccount to be created without a Profile
-        userProfile unique: true // Ensures that UserAccounts must be associated with unique Profiles
+        userName unique: true
+        userProfile nullable: true
     }
 }

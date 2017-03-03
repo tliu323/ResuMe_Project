@@ -1,10 +1,15 @@
 package resume
 
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
+//import static org.springframework.http.HttpStatus.*
+//import grails.transaction.Transactional
+import grails.rest.RestfulController
 
-@Transactional(readOnly = true)
-class QualificationController {
+
+class QualificationController extends RestfulController{
+
+    QualificationController(){
+        super(Qualification)
+    }
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -21,7 +26,6 @@ class QualificationController {
         respond new Qualification(params)
     }
 
-    @Transactional
     def save(Qualification qualification) {
         if (qualification == null) {
             transactionStatus.setRollbackOnly()
@@ -39,7 +43,7 @@ class QualificationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'qualification.label', default: 'Qualification'), qualification.id])
+               // flash.message = message(code: 'default.created.message', args: [message(code: 'qualification.label', default: 'Qualification'), qualification.id])
                 redirect qualification
             }
             '*' { respond qualification, [status: CREATED] }
@@ -50,7 +54,6 @@ class QualificationController {
         respond qualification
     }
 
-    @Transactional
     def update(Qualification qualification) {
         if (qualification == null) {
             transactionStatus.setRollbackOnly()
@@ -68,14 +71,14 @@ class QualificationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'qualification.label', default: 'Qualification'), qualification.id])
+                //flash.message = message(code: 'default.updated.message', args: [message(code: 'qualification.label', default: 'Qualification'), qualification.id])
                 redirect qualification
             }
             '*'{ respond qualification, [status: OK] }
         }
     }
 
-    @Transactional
+
     def delete(Qualification qualification) {
 
         if (qualification == null) {
@@ -88,7 +91,7 @@ class QualificationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'qualification.label', default: 'Qualification'), qualification.id])
+               // flash.message = message(code: 'default.deleted.message', args: [message(code: 'qualification.label', default: 'Qualification'), qualification.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +101,7 @@ class QualificationController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'qualification.label', default: 'Qualification'), params.id])
+                //flash.message = message(code: 'default.not.found.message', args: [message(code: 'qualification.label', default: 'Qualification'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
