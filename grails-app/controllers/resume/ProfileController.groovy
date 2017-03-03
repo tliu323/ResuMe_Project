@@ -1,16 +1,18 @@
 package resume
 
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
+//import static org.springframework.http.HttpStatus.*
+// import grails.transaction.Transactional
+import grails.rest.RestfulController
 
-@Transactional(readOnly = true)
-class ProfileController {
+class ProfileController extends RestfulController {
+
+    ProfileController(){
+        super(Profile)
+    }
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Profile.list(params), model:[profileCount: Profile.count()]
     }
 
     def show(Profile profile) {
@@ -21,7 +23,6 @@ class ProfileController {
         respond new Profile(params)
     }
 
-    @Transactional
     def save(Profile profile) {
         if (profile == null) {
             transactionStatus.setRollbackOnly()
@@ -39,7 +40,7 @@ class ProfileController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profile.id])
+                //flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profile.id])
                 redirect profile
             }
             '*' { respond profile, [status: CREATED] }
@@ -50,7 +51,6 @@ class ProfileController {
         respond profile
     }
 
-    @Transactional
     def update(Profile profile) {
         if (profile == null) {
             transactionStatus.setRollbackOnly()
@@ -68,14 +68,13 @@ class ProfileController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'profile.label', default: 'Profile'), profile.id])
+                //flash.message = message(code: 'default.updated.message', args: [message(code: 'profile.label', default: 'Profile'), profile.id])
                 redirect profile
             }
             '*'{ respond profile, [status: OK] }
         }
     }
 
-    @Transactional
     def delete(Profile profile) {
 
         if (profile == null) {
@@ -88,7 +87,7 @@ class ProfileController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'profile.label', default: 'Profile'), profile.id])
+                //flash.message = message(code: 'default.deleted.message', args: [message(code: 'profile.label', default: 'Profile'), profile.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -98,7 +97,7 @@ class ProfileController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), params.id])
+                //flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
