@@ -11,6 +11,7 @@ class BootStrap {
 
     def createSaveAccount(name, password){
         def account = new UserAccount(userName : name, password : password).save()
-        def profile = new Profile(ownerAccount : account.getId()).save()
+        def profile = new Profile(ownerAccount : account).save()
+//        def profile = new Profile(ownerAccount : account.getId()).save()
     }
 }
