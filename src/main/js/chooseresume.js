@@ -1,5 +1,5 @@
 /**
- * Created by Marlin on 3/3/2017.
+ * Created on 3/3/2017.
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
