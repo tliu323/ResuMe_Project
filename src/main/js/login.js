@@ -35,6 +35,7 @@ class LoginForm extends React.Component{
             username: "",
             password: "",
             message: "",
+            successMessage: "",
             isLocked: false
         };
 
@@ -73,12 +74,30 @@ class LoginForm extends React.Component{
         if (!this.canBeSubmitted()) {
             e.preventDefault();
             this.setState({message: 'Fields are missing'});
-
-
         }
+
         else {
             e.preventDefault();
-            this.setState({message: this.state.name + ", you have successfully signed up!", isLocked: true});
+
+            fetch('http://localhost:8080/userAccount/create?'
+                + 'userName=' + this.state.name, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(response => {
+                if (response.ok) {
+                    this.setState({message: " "});
+                    this.setState({
+                        successMessage: this.state.name + ", you successfully signed up!",
+                        isLocked: true
+                    });
+                }
+
+                else {
+                    this.setState({message: "Account:" + this.state.name + " is already taken!"});
+                }
+            })
         }
     }
 
@@ -91,6 +110,7 @@ class LoginForm extends React.Component{
     render(){
         const errors = validate(this.state.name, this.state.username, this.state.password);
         const fieldEmpty = Object.keys(errors).some(x => errors[x]);
+
         return(
         <div id = "Shadow-Box">
             <form onSubmit={this.handleSubmit}>

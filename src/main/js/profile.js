@@ -12,6 +12,7 @@ class Menu extends React.Component{
                 <icon><img src = {this.props.icon} height = {90}/></icon>
                 <li><a href="index.html">Search Templates</a></li>
                 <li><a href="#certifications">My Certifications</a></li>
+                <li><a href="#certifications">My Certifications</a></li>
                 <li><a href="#applications">My Applications</a></li>
             </div>
         );
@@ -103,5 +104,5 @@ class ProfileInfo extends React.Component {
 }
 
 ReactDOM.render(<Menu icon = "http://images.clipartpanda.com/stack-of-paper-vector-29343.png"/>, document.getElementById('menu'));
-ReactDOM.render(<Profile name = "Marlin Manka" status = "Student at Western University"  work = "Part-time Librarian" pic = "https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png" camera = "http://www.ensatt.fr/images/Graphisme/photo-icone.png"/>,document.getElementById('profile-box'));
+ReactDOM.render(<Profile name = "John Smith" status = "Student at Western University"  work = "Part-time Librarian" pic = "https://cdn3.iconfinder.com/data/icons/internet-and-web-4/78/internt_web_technology-13-256.png" camera = "http://www.ensatt.fr/images/Graphisme/photo-icone.png"/>,document.getElementById('profile-box'));
 ReactDOM.render(<ProfileInfo/>, document.getElementById('profile-info'));

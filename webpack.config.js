@@ -7,15 +7,16 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: './app.js',
-        app2: './app2.js',
-        app3: './app3.js',
-        app4: './app4.js',
+        app: './src/main/js/app.js',
+        app2: './src/main/js/app2.js',
+        app3: './src/main/js/app3.js',
+        app4: './src/main/js/app4.js',
     },
 
     output: {
-        path: __dirname,
-        filename: '[name].all.js'
+        path: './grails-app/assets/javascripts',
+        publicPath: '/assets/',
+        filename: '[name].all.js',
     },
 
     module: {
