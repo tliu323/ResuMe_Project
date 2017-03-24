@@ -10,7 +10,7 @@ class MenuLogin extends React.Component{
             <div className = "menu-box">
                 <h2 id = "resume">ResuME</h2>
                 <icon><img src = {this.props.icon} height = {90}/></icon>
-                <li><a href="index.html">About</a></li>
+                <li><a href="views\index.gsp">About</a></li>
                 <li><a href="#certifications">Contact</a></li>
                 <li><a href="#applications">Help</a></li>
             </div>

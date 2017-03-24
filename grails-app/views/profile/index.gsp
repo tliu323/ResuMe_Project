@@ -12,5 +12,6 @@
     <div id = "profile-info"></div>
 
     <asset:javascript src= "app.all.js"/>
+
 </body>
 </html>

@@ -12,7 +12,6 @@ class Menu extends React.Component{
                 <icon><img src = {this.props.icon} height = {90}/></icon>
                 <li><a href="index.html">Search Templates</a></li>
                 <li><a href="#certifications">My Certifications</a></li>
-                <li><a href="#certifications">My Certifications</a></li>
                 <li><a href="#applications">My Applications</a></li>
             </div>
         );

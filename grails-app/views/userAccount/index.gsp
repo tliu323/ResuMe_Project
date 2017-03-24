@@ -9,8 +9,7 @@
 <body>
     <div id = "loginMenuBox"></div>
     <div id = "log-in"></div>
-
     <asset:javascript src= "app2.all.js"/>
-
+    <tab> <a href = "/profile">Build your profile</a></tab>
 </body>
 </html>
